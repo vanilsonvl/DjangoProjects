@@ -1,0 +1,33 @@
+{% extends 'base2.html' %}
+{% block title %}Listagem de Marcas{% endblock %}
+{% block content %}
+    <form method="get">
+        <input type="text" name="buscar" placeholder="Buscar marca" />
+        <button type="submit" class="btn yellow darken-4">Buscar</button>
+    </form>
+    <table class="table">
+        <thead>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Produtos</th>
+            <th>Ações</th>
+        <tbody>
+        {% for brand in brands %}
+            <tr>
+                <td>{{ brand.name }}</td>
+                <td>{{ brand.category }}</td>
+                <td><a href="{% url 'lista_produtos_marca' pk=brand.id %}">Ver Produtos</a></td>
+                <td>
+                    <a href="{% url 'editar_marca' pk=brand.id %}">
+                        <i class="material-icons">node_edit</i>
+                    </a>
+                    <a href="{% url 'remover_marca' pk=brand.id %}">
+                        <i class="material-icons">delete</i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<a href="{% url 'cadastro_marca' %}" class="btn yellow darken-4">Cadastrar</a>
+{% endblock %}

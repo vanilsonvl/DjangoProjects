@@ -1,0 +1,10 @@
+{% extends 'base2.html' %}
+{% block title %}Remoção de Produto{% endblock %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <h4>Tem certeza que deseja excluir o produto "{{ product.description }}"</h4>
+        <br />
+        <button type="submit" class="btn  yellow darken-4">Remover</button>
+    </form>
+{% endblock %}

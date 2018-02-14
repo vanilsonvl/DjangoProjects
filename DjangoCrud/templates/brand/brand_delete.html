@@ -1,0 +1,10 @@
+{% extends 'base2.html' %}
+{% block title %}Remoção de Marca{% endblock %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <h4>Tem certeza que deseja excluir a marca "{{ brand.name }}"</h4>
+        <br />
+        <button type="submit" class="btn  yellow darken-4">Remover</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base2.html' %}
+{% block title %}Listagem de Produtos{% endblock %}
+{% block content %}
+    <form method="get">
+        <input type="text" name="buscar" placeholder="Buscar produto" />
+        <button type="submit" class="btn yellow darken-4">Buscar</button>
+    </form>
+    <table class="table">
+        <thead>
+            <th>Descrição</th>
+            <th>Preço</th>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td>
+                    <a href="{% url 'editar_produto' pk=product.id %}">
+                        <i class="material-icons">node_edit</i>
+                    </a>
+                    <a href="{% url 'remover_produto' pk=product.id %}">
+                        <i class="material-icons">delete</i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<a href="{% url 'cadastro_produto' %}" class="btn yellow darken-4">Cadastrar</a>
+{% endblock %}
